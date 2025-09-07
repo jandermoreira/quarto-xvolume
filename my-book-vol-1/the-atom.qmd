@@ -1,0 +1,13 @@
+---
+chapter: "The atom"
+author:
+    - "Democritus"
+    - "Leucippus"
+    - "John Dalton"
+---
+
+# This is the atom {#sec-the-atom}
+
+Atoms are the components of molecules (see @sec-the-molecule).
+
+Atoms form the whole universe (see @sec-the-planet and @sec-the-solar-system).

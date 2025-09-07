@@ -1,0 +1,9 @@
+---
+chapter: "The planets"
+author:
+    - "Copernicus"
+---
+
+# This is a planet {#sec-the-planet}
+
+Planets are formed of atoms (see @sec-the-atom) and are part of the Solar System (see @sec-the-solar-system)

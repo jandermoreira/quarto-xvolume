@@ -1,0 +1,30 @@
+project:
+  type: book
+  pre-render: _extensions/quarto-xvolume/collect-all-references.py
+
+filters: 
+  - quarto-xvolume
+
+quarto-xvolume:
+  base-url: http://localhost:3649/my-book-vol-
+
+book:
+  title: "My Book - Volume 2"
+  author: "The Collective"
+  date: "01/01/2025"
+  volume: 2
+  chapters:
+    - index.qmd
+    - the-planets.qmd
+    - the-solar-system.qmd
+    - references.qmd
+
+bibliography: references.bib
+
+format:
+  html:
+    theme:
+      - cosmo
+      - brand
+  pdf:
+    documentclass: scrreprt

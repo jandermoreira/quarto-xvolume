@@ -1,0 +1,9 @@
+---
+chapter: "The Solar System"
+author:
+    - "Isaac Newton"
+---
+
+# This is the Solar System {#sec-the-solar-system}
+
+The Solar System has planets (see @sec-the-planet) and are also made of atoms (@sec-the-atom) and molecules (@sec-the-molecule).

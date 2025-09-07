@@ -1,0 +1,32 @@
+[
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "My Book - Volume 1",
+    "section": "",
+    "text": "Preface\nThis is a Quarto book.\nTo learn more about Quarto books visit https://quarto.org/docs/books.",
+    "crumbs": [
+      "Preface"
+    ]
+  },
+  {
+    "objectID": "the-atom.html",
+    "href": "the-atom.html",
+    "title": "1  This is the atom",
+    "section": "",
+    "text": "Atoms are the components of molecules (see Chapter 2).\nAtoms form the whole universe (see This is a planet and This is the Solar System).",
+    "crumbs": [
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>This is the atom</span>"
+    ]
+  },
+  {
+    "objectID": "the-molecule.html",
+    "href": "the-molecule.html",
+    "title": "2  This is the molecule",
+    "section": "",
+    "text": "Molecules are are made of atoms (see Chapter 1).\nLivro: ?sec-cap-avaliacao-contexto\n\n2.0.1 Grouping molecules\nsomething here",
+    "crumbs": [
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>This is the molecule</span>"
+    ]
+  }
+]

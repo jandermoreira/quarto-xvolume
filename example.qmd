@@ -1,0 +1,11 @@
+---
+title: "Quarto-xvolume Example"
+filters:
+  - quarto-xvolume
+---
+
+## Heading
+
+This filter adds formatting to heading text.
+
+

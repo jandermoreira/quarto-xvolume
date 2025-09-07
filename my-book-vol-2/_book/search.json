@@ -1,0 +1,32 @@
+[
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "My Book - Volume 2",
+    "section": "",
+    "text": "Preface\nThis is a Quarto book.\nTo learn more about Quarto books visit https://quarto.org/docs/books.",
+    "crumbs": [
+      "Preface"
+    ]
+  },
+  {
+    "objectID": "the-planets.html",
+    "href": "the-planets.html",
+    "title": "1  This is a planet",
+    "section": "",
+    "text": "Planets are formed of atoms (see This is the atom) and are part of the Solar System (see Chapter 2)",
+    "crumbs": [
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>This is a planet</span>"
+    ]
+  },
+  {
+    "objectID": "the-solar-system.html",
+    "href": "the-solar-system.html",
+    "title": "2  This is the Solar System",
+    "section": "",
+    "text": "The Solar System has planets (see Chapter 1) and are also made of atoms (This is the atom) and molecules (This is the molecule).",
+    "crumbs": [
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>This is the Solar System</span>"
+    ]
+  }
+]
