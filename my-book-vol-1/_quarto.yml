@@ -15,8 +15,8 @@ book:
   volume: 1
   chapters:
     - index.qmd
-    - the-atom.qmd
-    - the-molecule.qmd
+    - part1/chapter-the-atom/the-atom.qmd
+    - part2/chapter-the-molecule/the-molecule.qmd
     - references.qmd
 
 bibliography: references.bib

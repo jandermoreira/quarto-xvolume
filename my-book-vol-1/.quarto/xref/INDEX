@@ -16,5 +16,11 @@
   },
   "the-molecule.qmd": {
     "the-molecule.html": "07dc615c"
+  },
+  "part1/chapter-the-atom/the-atom.qmd": {
+    "the-atom.html": "0707a6bf"
+  },
+  "part2/chapter-the-molecule/the-molecule.qmd": {
+    "the-molecule.html": "d6994b5e"
   }
 }
