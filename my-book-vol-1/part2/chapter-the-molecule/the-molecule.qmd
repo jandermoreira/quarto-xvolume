@@ -9,8 +9,6 @@ author:
 
 Molecules are are made of atoms (see @sec-the-atom).
 
-Livro: @sec-cap-avaliacao-contexto
-
-### Grouping molecules {#teste}
+### Grouping molecules {#grouping-molecules}
 
 something here

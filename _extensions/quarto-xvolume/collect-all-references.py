@@ -30,7 +30,7 @@ def collect_crossrefs_in_subdir(subdir):
 
     for root, _, filenames in os.walk(subdir):
         for filename in filenames:
-            if filename.endswith(".qmd"):
+            if filename.endswith(".qmd") or filename.endswith(".md"):
                 print(f"Checking file: {root + '/' +filename}")
                 filepath = os.path.join(root, filename)
                 try:

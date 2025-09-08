@@ -6,7 +6,7 @@ filters:
   - quarto-xvolume
 
 quarto-xvolume:
-  base-url: https://brasileiraspln.com/livro-pln/34-edicao/volume
+  base-url: ../../my-book-vol-2/_book
 
 book:
   title: "My Book - Volume 1"
