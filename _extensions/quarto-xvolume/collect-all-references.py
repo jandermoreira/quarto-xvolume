@@ -1,3 +1,8 @@
+#!/usr/bin/python3
+"""
+Program to collect cross-references from .qmd files in a directory tree
+and output them to a JSON file.
+"""
 
 import os
 import re
@@ -25,8 +30,8 @@ def collect_crossrefs_in_subdir(subdir):
 
     for root, _, filenames in os.walk(subdir):
         for filename in filenames:
+            print(f"Checking file: {filename}")
             if filename.endswith(".qmd"):
-                print(f"Checking file: {filename}")
                 filepath = os.path.join(root, filename)
                 try:
                     with open(filepath, "r", encoding="utf-8") as f:
