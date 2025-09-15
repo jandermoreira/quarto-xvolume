@@ -164,8 +164,8 @@ local function process_document(doc)
     return doc
   end
 
-  doc = doc:walk(citation_filter(volume, refs, target))
   doc = doc:walk(include_filter(parent_dir))
+  doc = doc:walk(citation_filter(volume, refs, target))
   return doc
 end
 
