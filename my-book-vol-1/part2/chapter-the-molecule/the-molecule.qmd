@@ -9,6 +9,6 @@ author:
 
 Molecules are are made of atoms (see @sec-the-atom).
 
-### Grouping molecules {#grouping-molecules}
+### Grouping molecules {#sec-grouping-molecules}
 
 something here

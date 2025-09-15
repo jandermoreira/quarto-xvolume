@@ -22,5 +22,8 @@
   },
   "part2/chapter-the-molecule/the-molecule.qmd": {
     "the-molecule.html": "d6994b5e"
+  },
+  "authors.qmd": {
+    "authors.html": "f5368744"
   }
 }

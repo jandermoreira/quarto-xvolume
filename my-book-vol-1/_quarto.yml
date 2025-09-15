@@ -18,6 +18,7 @@ book:
     - part1/chapter-the-atom/the-atom.qmd
     - part2/chapter-the-molecule/the-molecule.qmd
     - references.qmd
+    - authors.qmd
 
 bibliography: references.bib
 

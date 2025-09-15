@@ -1,0 +1,6 @@
+---
+title: "Authors"
+---
+
+```{.include author="author-template.qmd"}
+```

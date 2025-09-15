@@ -6,13 +6,20 @@ A Quarto extension to manage multi-volume books in Quarto.
 All volumes should be in the same parent folder, like:
 
 ```
-my-book/
+my-book/  (base folder)
+  _extensions/
+    quarto-xvolume
+  authors/
+    author1.qmd
+    author2.qmd
   my-book-vol1/
+    _extensions/  (symlink or actual folder)
     _quarto.yml
     index.qmd
     chapter1.qmd
     chapter2.qmd
   my-book-vol2/
+    _extensions/  (symlink or actual folder)
     _quarto.yml
     index.qmd
     chapter1.qmd
@@ -29,7 +36,7 @@ Run the following command for each volume:
 quarto install extension jandermoreira/quarto-xvolume
 ```
 
-**Second method**
+**Second method** (prefered)
 
 Run the following command in the parent folder of all volumes and create symlinks to each volume:
 
@@ -76,6 +83,20 @@ book:
 - The `volume` number must be set to a number (1, 2, 3, ...) for each volume. Do not use non-numeric values such as I, II, III, A, B, C, etc.
 - The `volume` number must be unique for each volume, of course.
 
+## About authors and their photos
+Author files must be in the `authors` folder in the parent folder of all volumes.
+Each author file must have the following structure:
+
+```yaml
+---
+name: First name
+surname: Last name
+middle_name: Middle name (optional)
+description: Short description of the author
+type: author, editor, organizer, etc. # (not used yet)
+photo: path/to/photo.jpg 
+email: email
+contribution: ["@sec-label1", "@sec-label2"] # (optional, list of chapters where the author contributed)
 
 ## Requirements
 - Python 3 to run the script
