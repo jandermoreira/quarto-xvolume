@@ -24,8 +24,9 @@ local function citation_filter(volume, refs, target)
       if not refs[id] or refs[id]["volume"] == volume or not refs[id]["text"] then
         return cite
       end
+      local text = pandoc.read(refs[id]["text"], "markdown").blocks[1].content
       return pandoc.Link(
-        refs[id]["text"],
+        text,
         target .. refs[id]["volume"] .. "/" .. refs[id]["file"] .. "#" .. id,
         "Volume " .. refs[id]["volume"],
         { target = "_blank" }
