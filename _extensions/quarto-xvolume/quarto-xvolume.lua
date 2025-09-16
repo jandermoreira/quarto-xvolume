@@ -4,12 +4,22 @@
 local debug = quarto.log.output
 local json = require("json")
 
+local function x_volume_error(msg)
+  quarto.log.error("[FATAL] xvolume: " .. msg)
+end
+
+local function debug(msg)
+  quarto.log.output("[DEBUG] xvolume: " .. msg)
+end
+
 local function get_volume(meta)
-  local volume = meta["book"] and meta["book"]["volume"]
-  if not volume then
+  local volume
+  if meta["book"] and meta["book"]["volume"] then
+    volume = meta["book"]["volume"]
+    return tonumber(pandoc.utils.stringify(volume))
+  else
     return nil
   end
-  return tonumber(pandoc.utils.stringify(volume))
 end
 
 local function get_target(meta)
@@ -145,24 +155,28 @@ local function load_references(parent_dir)
 end
 
 local function process_document(doc)
+  local error_list = {}
+
   local volume = get_volume(doc.meta)
-  if not volume then
-    debug("No volume information found in metadata.")
-    return doc
+  if volume == nil then
+    table.insert(error_list, "No volume information found in metadata. Add 'book: volume: X' to your document's YAML.")
   end
 
   local target = get_target(doc.meta)
   if not target then
-    debug("No quarto-xvolume/base-url found in metadata.")
-    return doc
+    table.insert(error_list, "No quarto-xvolume/base-url found in metadata. Edit your document's YAML to add it.")
   end
 
   local path = os.getenv("QUARTO_PROJECT_DIR")
   local parent_dir = path:match("^(.*)/[^/]+$")
   local refs = load_references(parent_dir)
   if not refs then
-    debug("File 'crossref.json' not found.")
-    return doc
+    table.insert(error_list, "File 'crossref.json' not found. Make sure you're collecting the references.")
+  end
+  if #error_list > 0 then
+    local error_msg = "Errors found in processing document:\n" .. table.concat(error_list, "\n- ")
+    x_volume_error(error_msg)
+    return pandoc.read("Failed to process document due to errors. See log for details.", "markdown")
   end
 
   doc = doc:walk(include_filter(parent_dir))
