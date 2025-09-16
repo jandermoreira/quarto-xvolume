@@ -6,7 +6,7 @@ author:
     - "John Dalton"
 ---
 
-# This is the atom {#sec-the-atom}
+# This is the **atom** ($\alpha$) {#sec-the-atom}
 
 Atoms are the components of molecules (see @sec-the-molecule, specially @sec-grouping-molecules).
 

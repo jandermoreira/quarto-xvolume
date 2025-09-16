@@ -14,7 +14,7 @@
     "href": "the-planets.html",
     "title": "1  This is a planet",
     "section": "",
-    "text": "Planets are formed of atoms (see This is the atom) and are part of the Solar System (see Chapter 2)",
+    "text": "Planets are formed of atoms (see This is the atom (\\(\\alpha\\))) and are part of the Solar System (see Chapter 2)",
     "crumbs": [
       "<span class='chapter-number'>1</span>  <span class='chapter-title'>This is a planet</span>"
     ]
@@ -24,7 +24,7 @@
     "href": "the-solar-system.html",
     "title": "2  This is the Solar System",
     "section": "",
-    "text": "The Solar System has planets (see Chapter 1) and are also made of atoms (This is the atom) and grouped in molecules (Grouping molecules).",
+    "text": "The Solar System has planets (see Chapter 1) and are also made of atoms (This is the atom (\\(\\alpha\\))) and grouped in molecules (Grouping molecules).",
     "crumbs": [
       "<span class='chapter-number'>2</span>  <span class='chapter-title'>This is the Solar System</span>"
     ]

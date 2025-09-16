@@ -10,7 +10,7 @@
     "file": "part2/chapter-the-molecule/the-molecule.html"
   },
   "sec-the-atom": {
-    "text": "This is the atom",
+    "text": "This is the **atom** ($\\alpha$)",
     "volume": 1,
     "file": "part1/chapter-the-atom/the-atom.html"
   },
