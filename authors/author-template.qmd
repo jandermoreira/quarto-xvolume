@@ -7,7 +7,7 @@ authoring:
     type: author, organizer
     photo: media/DemocritusAbdera.png
     email: "democritus@thephilosopher.org"
-    contribution-text: "The author has contributed to the following chapters:"
+    contribution-text: "The author conceived of and organized this book series, and contributed to the following chapters:"
     contribution: ["@sec-the-atom" , "@sec-the-molecule", "@sec-the-solar-system"]
 ---
 

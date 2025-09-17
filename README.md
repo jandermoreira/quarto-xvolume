@@ -3,7 +3,7 @@ A Quarto extension to manage multi-volume books in Quarto.
 
 ## Organization
 
-All volumes should be in the same parent folder, like:
+All volumes should be in the same parent (base) folder, with a separate folder for each volume. Each volume should have its own book project with its own `_quarto.yml` file.
 
 ```
 my-book/  (base folder)
@@ -13,13 +13,13 @@ my-book/  (base folder)
     author1.qmd
     author2.qmd
   my-book-vol1/
-    _extensions/  (symlink or actual folder)
+    _extensions/  (symlink to ../_extensions)
     _quarto.yml
     index.qmd
     chapter1.qmd
     chapter2.qmd
   my-book-vol2/
-    _extensions/  (symlink or actual folder)
+    _extensions/  (symlink to ../_extensions)
     _quarto.yml
     index.qmd
     chapter1.qmd
@@ -28,30 +28,26 @@ my-book/  (base folder)
 
 ## Installation and Usage
 
-**First method**
-
-Run the following command for each volume:
-
-```bash
-quarto install extension jandermoreira/quarto-xvolume
-```
-
-**Second method** (prefered)
-
-Run the following command in the parent folder of all volumes and create symlinks to each volume:
+The extension must be installed in the base folder (the parent folder of all volumes). 
+To do so, run the following command in the base folder:
 
 ```bash
 quarto install extension jandermoreira/quarto-xvolume
 ```
 
+Then create a symlink to the `_extensions` folder in each volume folder:
+
 ```bash
-cd my-book-vol1
-ln -s ../_extensions
+# In the base folder run:
+ln -s ../_extensions my-book-vol1/_extensions
+ln -s ../_extensions my-book-vol2/_extensions 
 ```
+
+Repeat for all volumes.
 
 ## Configuration of each volume
 
-Edit your `_quarto.yml` files:
+Edit your `_quarto.yml` files to include the following configuration:
 
 ```yaml
 project:
@@ -75,7 +71,7 @@ book:
 ```
 
 
-## Warnings
+## Important notes
 
 - The `collect-all-references.py` script always runs before rendering the book to ensure all references are collected.
 - The cross-references labels must be unique across all volumes to avoid conflicts.
@@ -84,7 +80,9 @@ book:
 - The `volume` number must be unique for each volume, of course.
 
 ## About authors and their photos
-Author files must be in the `authors` folder in the parent folder of all volumes.
+
+Author description files must be in the `authors` folder in the parent folder of all volumes.
+
 Each author file must have the following structure:
 
 ```yaml
@@ -96,7 +94,19 @@ description: Short description of the author
 type: author, editor, organizer, etc. # (not used yet)
 photo: path/to/photo.jpg 
 email: email
+contribution-text: "Contributed to chapters:" # (optional)
 contribution: ["@sec-label1", "@sec-label2"] # (optional, list of chapters where the author contributed)
+---
+```
+
+To include an author in a Quarto document, use the following syntax:
+
+``````
+```{.include author="AuhthorName.qmd"}
+```
+``````
 
 ## Requirements
-- Python 3 to run the script
+
+- Python 3.x to run the pre-render script.
+- Quarto 1.7 or higher.

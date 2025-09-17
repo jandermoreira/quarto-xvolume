@@ -7,6 +7,7 @@ filters:
 
 quarto-xvolume:
   base-url: ../../my-book-vol-2/_book
+  # contribution-text: "Chapters:"
 
 book:
   title: "My Book - Volume 1"
@@ -29,6 +30,7 @@ format:
       - brand
   pdf:
     documentclass: scrbook
+    keep-tex: true
 
 
 
