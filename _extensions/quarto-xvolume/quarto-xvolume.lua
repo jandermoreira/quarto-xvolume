@@ -110,7 +110,6 @@ local function generate_author(author)
     end
   end
   author.contribution_text:extend({ pandoc.Str(".") })
-  debug(">>> Contribution list:", author.contribution_text)
   if quarto.doc.is_format("pdf") then
     return pandoc.Blocks({
       pandoc.Header(2, pandoc.Span {
@@ -122,13 +121,14 @@ local function generate_author(author)
     })
   else
     quarto.doc.add_resource(author.photo)
+    debug(pandoc.utils.make_identifier) 
     return pandoc.Blocks({
       pandoc.Header(
         2, pandoc.Span {
           pandoc.Str(full_name),
           pandoc.Space(),
           pandoc.Link("📨️", "mailto:" .. author.email)
-        }, pandoc.Attr("", { "unnumbered" })
+        }, pandoc.Attr(full_name, { "unnumbered" })
       ),
       pandoc.Div(
         {
