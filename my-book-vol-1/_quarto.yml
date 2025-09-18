@@ -30,7 +30,6 @@ format:
       - brand
   pdf:
     documentclass: scrbook
-    keep-tex: true
 
 
 
