@@ -117,6 +117,7 @@ local function generate_author(author)
       }, pandoc.Attr("", { "unnumbered" })),
       pandoc.Para(author.description),
       pandoc.Para {
+        pandoc.RawInline("latex", "\\noindent"),
         pandoc.Str("Email: "),
         pandoc.Link(pandoc.Code(author.email), "mailto:" .. author.email)
       }
