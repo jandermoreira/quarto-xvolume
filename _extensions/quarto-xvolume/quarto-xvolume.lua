@@ -93,7 +93,6 @@ local function generate_author(author)
   local full_name = author.name .. middle .. " " .. author.surname
 
   local has_contribution = author.contribution and #author.contribution > 0
-  local contribution_list
   if has_contribution then
     if author.contribution_text then
       author.contribution_text:extend({ pandoc.Space() })
@@ -110,18 +109,20 @@ local function generate_author(author)
     end
   end
   author.contribution_text:extend({ pandoc.Str(".") })
+  author.description:extend({ pandoc.Space(), table.unpack(author.contribution_text) })
   if quarto.doc.is_format("pdf") then
     return pandoc.Blocks({
       pandoc.Header(2, pandoc.Span {
         pandoc.Str(full_name),
       }, pandoc.Attr("", { "unnumbered" })),
-      pandoc.Para { pandoc.Link(pandoc.Code(author.email), "mailto:" .. author.email) },
       pandoc.Para(author.description),
-      pandoc.Inlines { table.unpack(author.contribution_text) }
+      pandoc.Para {
+        pandoc.Str("Email: "),
+        pandoc.Link(pandoc.Code(author.email), "mailto:" .. author.email)
+      }
     })
   else
     quarto.doc.add_resource(author.photo)
-    debug(pandoc.utils.make_identifier) 
     return pandoc.Blocks({
       pandoc.Header(
         2, pandoc.Span {
@@ -143,13 +144,7 @@ local function generate_author(author)
             },
             pandoc.Attr("", { "grid-column" })
           ),
-          pandoc.Div(
-            {
-              pandoc.Para(author.description),
-              table.unpack(author.contribution_text)
-            },
-            pandoc.Attr("", { "grid-column" })
-          )
+          pandoc.Div({ pandoc.Para(author.description) }, pandoc.Attr("", { "grid-column" }))
         }, pandoc.Attr(
           "",
           { "grid-container" },
