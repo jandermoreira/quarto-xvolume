@@ -95,6 +95,9 @@ local function citation_filter(info)
       if not info["refs"][id] then
         return cite
       end
+      if info["refs"][id]["volume"] == info["volume"] and quarto.doc.is_format("pdf") then
+        return cite
+      end
       local prefix
       if cite.citations[1].mode and cite.citations[1].mode == "SuppressAuthor" then
         prefix = pandoc.Str("")
