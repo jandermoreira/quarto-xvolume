@@ -92,16 +92,21 @@ local function citation_filter(info)
   return {
     Cite = function(cite)
       local id = cite.citations[1].id
-      if not info["refs"][id] or info["refs"][id]["volume"] == volume or not info["refs"][id]["text"] then
-        return cite
+      -- if not info["refs"][id] or info["refs"][id]["volume"] == info["volume"] or not info["refs"][id]["text"] then
+      --   return cite
+      -- end
+      local prefix
+      if cite.citations[1].mode and cite.citations[1].mode == "SuppressAuthor" then
+        prefix = pandoc.Str("")
+      else
+        local level = info["refs"][id]["level"]
+        if level < 1 then
+          level = 1
+        elseif level > 3 then
+          level = 3
+        end
+        prefix = pandoc.Str(info["level" .. level])
       end
-      local level = info["refs"][id]["level"]
-      if level < 1 then
-        level = 1
-      elseif level > 3 then
-        level = 3
-      end
-      local prefix = pandoc.Str(info["level" .. level])
       local text = pandoc.read(info["refs"][id]["text"], "markdown").blocks[1].content
       return pandoc.Span {
         prefix, pandoc.Space(),

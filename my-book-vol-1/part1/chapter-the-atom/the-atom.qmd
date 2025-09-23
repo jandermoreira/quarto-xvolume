@@ -8,6 +8,6 @@ author:
 
 ## This is the **atom** {#sec-the-atom}
 
-Atoms are the components of molecules (see @sec-the-molecule, specially @sec-grouping-molecules).
+Atoms are the components of molecules (see -@sec-the-molecule, @sec-grouping-molecules).
 
 Atoms form the whole universe (see @sec-the-planet and @sec-the-solar-system).
