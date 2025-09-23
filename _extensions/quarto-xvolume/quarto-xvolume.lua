@@ -109,7 +109,8 @@ local function citation_filter(info)
       end
       local text = pandoc.read(info["refs"][id]["text"], "markdown").blocks[1].content
       if info["refs"][id]["volume"] == info["volume"] and quarto.doc.is_format("pdf") then
-        return pandoc.Span { cite, pandoc.Space(), table.unpack(text) }
+        -- return pandoc.Span { cite, pandoc.Space(), table.unpack(text) }
+        return cite
       else
         return pandoc.Span {
           prefix, pandoc.Space(),
