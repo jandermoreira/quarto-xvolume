@@ -95,9 +95,6 @@ local function citation_filter(info)
       if not info["refs"][id] then
         return cite
       end
-      if info["refs"][id]["volume"] == info["volume"] and quarto.doc.is_format("pdf") then
-        return cite
-      end
       local prefix
       if cite.citations[1].mode and cite.citations[1].mode == "SuppressAuthor" then
         prefix = pandoc.Str("")
@@ -111,15 +108,19 @@ local function citation_filter(info)
         prefix = pandoc.Str(info["level" .. level])
       end
       local text = pandoc.read(info["refs"][id]["text"], "markdown").blocks[1].content
-      return pandoc.Span {
-        prefix, pandoc.Space(),
-        pandoc.Link(
-          pandoc.Inlines { table.unpack(text) },
-          info["target"] .. info["refs"][id]["volume"] .. "/" .. info["refs"][id]["file"] .. "#" .. id,
-          "Volume " .. info["refs"][id]["volume"],
-          { target = "_blank" }
-        )
-      }
+      if info["refs"][id]["volume"] == info["volume"] and quarto.doc.is_format("pdf") then
+        return pandoc.Span { cite, pandoc.Space(), table.unpack(text) }
+      else
+        return pandoc.Span {
+          prefix, pandoc.Space(),
+          pandoc.Link(
+            pandoc.Inlines { table.unpack(text) },
+            info["target"] .. info["refs"][id]["volume"] .. "/" .. info["refs"][id]["file"] .. "#" .. id,
+            "Volume " .. info["refs"][id]["volume"],
+            { target = "_blank" }
+          )
+        }
+      end
     end
   }
 end
