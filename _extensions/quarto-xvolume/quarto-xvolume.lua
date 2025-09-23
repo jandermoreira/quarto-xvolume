@@ -92,9 +92,9 @@ local function citation_filter(info)
   return {
     Cite = function(cite)
       local id = cite.citations[1].id
-      -- if not info["refs"][id] or info["refs"][id]["volume"] == info["volume"] or not info["refs"][id]["text"] then
-      --   return cite
-      -- end
+      if not info["refs"][id] then
+        return cite
+      end
       local prefix
       if cite.citations[1].mode and cite.citations[1].mode == "SuppressAuthor" then
         prefix = pandoc.Str("")
