@@ -2,26 +2,31 @@
   "sec-the-molecule": {
     "text": "This is the molecule",
     "volume": 1,
+    "level": 2,
     "file": "part2/chapter-the-molecule/the-molecule.html"
   },
   "sec-grouping-molecules": {
     "text": "Grouping molecules",
     "volume": 1,
+    "level": 3,
     "file": "part2/chapter-the-molecule/the-molecule.html"
   },
   "sec-the-atom": {
     "text": "This is the **atom**",
     "volume": 1,
+    "level": 2,
     "file": "part1/chapter-the-atom/the-atom.html"
   },
   "sec-the-solar-system": {
     "text": "This is the Solar System",
     "volume": 2,
+    "level": 1,
     "file": "the-solar-system.html"
   },
   "sec-the-planet": {
     "text": "This is a planet",
     "volume": 2,
+    "level": 1,
     "file": "the-planets.html"
   }
 }

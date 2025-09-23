@@ -8,6 +8,9 @@ filters:
 quarto-xvolume:
   base-url: ../../my-book-vol-2/_book
   # contribution-text: "Chapters:"
+  # prefix-level-1: "Chap."
+  # prefix-level-2: "Sec."
+  # prefix-level-3: "Subsec."
 
 book:
   title: "My Book - Volume 1"

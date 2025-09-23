@@ -57,6 +57,24 @@ local function get_info(meta)
     }
   end
 
+  if meta["quarto-xvolume"] and meta["quarto-xvolume"]["prefix-level-1"] then
+    info["level1"] = pandoc.utils.stringify(meta["quarto-xvolume"]["prefix-level-1"])
+  else
+    info["level1"] = "Chapter"
+  end
+
+  if meta["quarto-xvolume"] and meta["quarto-xvolume"]["prefix-level-2"] then
+    info["level2"] = pandoc.utils.stringify(meta["quarto-xvolume"]["prefix-level-2"])
+  else
+    info["level2"] = "Section"
+  end
+
+  if meta["quarto-xvolume"] and meta["quarto-xvolume"]["prefix-level-3"] then
+    info["level3"] = pandoc.utils.stringify(meta["quarto-xvolume"]["prefix-level-3"])
+  else
+    info["level3"] = "Subsection"
+  end
+
   local refs, basedir = load_references(error_list)
   info["refs"] = refs
   info["base_dir"] = basedir
@@ -77,13 +95,23 @@ local function citation_filter(info)
       if not info["refs"][id] or info["refs"][id]["volume"] == volume or not info["refs"][id]["text"] then
         return cite
       end
+      local level = info["refs"][id]["level"]
+      if level < 1 then
+        level = 1
+      elseif level > 3 then
+        level = 3
+      end
+      local prefix = pandoc.Str(info["level" .. level])
       local text = pandoc.read(info["refs"][id]["text"], "markdown").blocks[1].content
-      return pandoc.Link(
-        text,
-        info["target"] .. info["refs"][id]["volume"] .. "/" .. info["refs"][id]["file"] .. "#" .. id,
-        "Volume " .. info["refs"][id]["volume"],
-        { target = "_blank" }
-      )
+      return pandoc.Span {
+        prefix, pandoc.Space(),
+        pandoc.Link(
+          pandoc.Inlines { table.unpack(text) },
+          info["target"] .. info["refs"][id]["volume"] .. "/" .. info["refs"][id]["file"] .. "#" .. id,
+          "Volume " .. info["refs"][id]["volume"],
+          { target = "_blank" }
+        )
+      }
     end
   }
 end
@@ -206,10 +234,7 @@ local function include_filter(info)
 end
 
 local function process_document(doc)
-  local error_list = {}
-
   local info = get_info(doc.meta)
-
 
   doc = doc:walk(include_filter(info))
   doc = doc:walk(citation_filter(info))

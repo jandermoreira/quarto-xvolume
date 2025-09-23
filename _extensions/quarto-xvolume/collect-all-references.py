@@ -37,15 +37,17 @@ def collect_crossrefs_in_subdir(subdir):
                     with open(filepath, "r", encoding="utf-8") as f:
                         content = f.read()
                     matches = pattern.findall(content)
-                    for _, title_text, ref in matches:
+                    for hashes, title_text, ref in matches:
                         if ref == "refs":
                             continue
 
+                        level = len(hashes)  # número de # indica o nível do título
                         rel_path = os.path.relpath(filepath, subdir)
                         html_file = os.path.splitext(rel_path)[0] + ".html"
                         crossrefs[ref] = {
                             "text": title_text.strip(),
                             "volume": volume,
+                            "level": level,
                             "file": html_file
                         }
                 except Exception as e:
